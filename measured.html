@@ -86,6 +86,18 @@
 
   main { padding-block: 40px 8px; }
   .app { margin: 0 0 40px; padding: 24px; border: 1px solid var(--stroke); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); scroll-margin-top: 24px; }
+  /* Legend: what each bench row means, in the four groups the intro names (small, quiet, quick, tidy). */
+  .legend { margin: 0 0 40px; padding: 24px; border: 1px solid var(--stroke); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); }
+  .legend h2 { margin: 0 0 6px; font: 500 15px/1.2 var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--cyan-ink); }
+  .legend > p { margin: 0 0 20px; color: var(--text2); font-size: 14px; max-width: 70ch; }
+  .legend-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 24px; }
+  @media (max-width: 860px) { .legend-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .legend-grid { grid-template-columns: minmax(0, 1fr); } }
+  .legend h3 { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+  .legend dl { margin: 0; font-size: 13px; line-height: 1.45; }
+  .legend dt { font-weight: 600; color: var(--text); }
+  .legend dd { margin: 2px 0 12px; color: var(--text2); }
+  .legend dd:last-child { margin-bottom: 0; }
   .app-head { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
   .app-head > img { width: 56px; height: 56px; flex: none; display: block; }
   .app-head h2 { margin: 0; font-weight: 400; line-height: 1; }
@@ -141,6 +153,48 @@
 
 <main class="wrap">
   <p class="hub-back"><a id="hub-back" href="/">&larr; Back to Apps Hub</a></p>
+  <section class="legend" aria-labelledby="legend-h">
+    <h2 id="legend-h">How to read the tables</h2>
+    <p>Every app is measured on the same eight rows, in four groups. Each row has a limit, and the app passes only when its result is within that limit.</p>
+    <div class="legend-grid">
+      <div>
+        <h3>Small to install</h3>
+        <dl>
+          <dt>Size on your disk once installed</dt>
+          <dd>How much space the app takes on your PC.</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Quiet while it waits</h3>
+        <dl>
+          <dt>Processor time while it waits</dt>
+          <dd>How much of your processor it uses in a quiet minute, when you are not using it.</dd>
+          <dt>Memory reserved while it waits</dt>
+          <dd>How much memory it holds while it sits in the background.</dd>
+          <dt>Cost of its own background work</dt>
+          <dd>The processor time it spends each time its own job comes up, such as Clipee saving something you copied.</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Quick when you call it</h3>
+        <dl>
+          <dt>Time to appear, first time</dt>
+          <dd>From your shortcut or key press to the window showing its content, the first time after the app starts.</dd>
+          <dt>Time to appear, after that</dt>
+          <dd>The same, once it has opened before.</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Tidy when you are done</h3>
+        <dl>
+          <dt>Memory reserved after you have used it</dt>
+          <dd>How much memory it still holds a minute after you close its window.</dd>
+          <dt>Memory growth after opening it 20 times</dt>
+          <dd>How much more memory it holds after 20 opens. A tidy app gives memory back instead of piling it up.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
   <p id="status" role="status">Loading the figures&hellip;</p>
   <div id="apps"></div>
   <p class="note">Memory is counted as reserved memory, the amount the app has asked Windows for, because a trim cannot flatter that figure. A row that failed stays on this page, marked as failed.</p>
