@@ -124,6 +124,24 @@
   #status { color: var(--text2); }
   .note { color: var(--text3); font-size: 13px; margin: 0 0 24px; max-width: 70ch; }
   .rownote { display: block; margin-top: 4px; color: var(--text3); font-size: 12px; font-weight: 400; line-height: 1.4; max-width: 46ch; }
+  /* Phones: each row becomes a small block (name and mark on top, then Result and Limit, each with its label),
+     so nothing is squeezed into narrow columns or hidden past the edge. */
+  @media (max-width: 640px) {
+    .app { padding: 16px; }
+    .tablewrap { overflow: visible; }
+    table, tbody, tr, th, td { display: block; }
+    thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; padding: 14px 0; border-top: 1px solid var(--stroke); }
+    tbody th, tbody td { padding: 0; border: 0; }
+    tbody th { grid-column: 1; grid-row: 1; font-weight: 600; }
+    tbody td:last-child { grid-column: 2; grid-row: 1; }
+    td.val, td.lim { grid-column: 1 / -1; display: grid; grid-template-columns: 4.5em minmax(0, 1fr); gap: 8px; }
+    td.lim { white-space: normal; }
+    td.val::before, td.lim::before { font: 500 11px/1.9 var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--cyan-ink); }
+    td.val::before { content: "Result"; }
+    td.lim::before { content: "Limit"; }
+    .rownote { max-width: none; }
+  }
   footer { padding-block: 32px 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; color: var(--text3); font-size: 13px; }
   /* The maker plate: Rams variant, the one the apps wear. It is never altered. */
   .plate {
