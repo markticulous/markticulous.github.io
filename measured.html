@@ -104,7 +104,7 @@
   /* The app's drawn wordmark, never typed text (brand bible, Wordmark), at the same sizes as the hub cards. */
   .app-head > img.inset { margin-right: -3.5px; } /* the v1 SVG icons draw their tile 3.5px inside the box; 14px from tile edge to wordmark, as on the hub */
   .wm { display: block; width: auto; }
-  .wm-clipee, .wm-peekee { height: 33px; margin-bottom: -9px; } /* same letter scale as Backee; the -9px leaves the p's descender out when centring on the icon */
+  .wm-clipee, .wm-peekee, .wm-findee { height: 33px; margin-bottom: -9px; } /* same letter scale as Backee; the -9px leaves the p's descender out when centring on the icon */
   .wm-backee { height: 24px; }
   .facts { margin: 0 0 16px; color: var(--text2); font-size: 14px; }
   .facts b { color: var(--text); font-weight: 600; }
@@ -226,8 +226,8 @@
 </div>
 
 <script>
-  const ICONS = { clipee: '/support/assets/clipee-v1.svg', peekee: '/support/assets/peekee.svg', backee: '/support/assets/backee-v1.svg' };
-  const WORDMARKS = { clipee: 33, peekee: 33, backee: 24 }; // drawn wordmark height in px, as on the hub cards
+  const ICONS = { clipee: '/support/assets/clipee-v1.svg', peekee: '/support/assets/peekee.svg', findee: '/support/assets/findee-v1.svg', backee: '/support/assets/backee-v1.svg' };
+  const WORDMARKS = { clipee: 33, peekee: 33, findee: 33, backee: 24 }; // drawn wordmark height in px, as on the hub cards
   const NAMES = {
     S1: 'Size on your disk once installed',
     R1: 'Processor time while it waits (per quiet minute)',
